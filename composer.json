@@ -1,0 +1,18 @@
+{
+  "name": "jenwachter/logger-exchange",
+  "version": "0.0.0",
+  "description": "A collection of PHP interfaces and adapters to make swapping out logger dependencies quick and easy.",
+  "license": "MIT",
+  "homepage": "http://github.com/jenwachter/logger-exchange",
+  "authors": [
+    {
+      "name": "jenwachter",
+      "homepage": "https://github.com/jenwachter"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "LoggerExchange\\" : ["src/"]
+    }
+  }
+}
