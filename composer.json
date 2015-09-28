@@ -1,13 +1,13 @@
 {
-  "name": "jenwachter/logger-exchange",
+  "name": "johnshopkins/logger-exchange",
   "version": "0.0.0",
   "description": "A collection of PHP interfaces and adapters to make swapping out logger dependencies quick and easy.",
   "license": "MIT",
-  "homepage": "http://github.com/jenwachter/logger-exchange",
+  "homepage": "http://github.com/johnshopkins/logger-exchange",
   "authors": [
     {
-      "name": "jenwachter",
-      "homepage": "https://github.com/jenwachter"
+      "name": "Jen Wachter",
+      "email": "jwachter@jhu.edu"
     }
   ],
   "autoload": {
