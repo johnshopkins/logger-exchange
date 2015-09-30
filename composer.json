@@ -23,5 +23,5 @@
   ],
   "suggest": {
       "johnshopkins/cache-exchange": "Allows caching of logs for a certain period of time."
-  },
+  }
 }
