@@ -16,9 +16,12 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
+   * @param  string  $key     Cache key
    * @return Boolean Whether the record has been processed
    */
-	public function addDebug($message, $context = array());
+	public function addDebug($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds an info log record.
@@ -26,9 +29,11 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addInfo($message, $context = array());
+	public function addInfo($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds a notice log record.
@@ -36,9 +41,11 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addNotice($message, $context = array());
+	public function addNotice($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds a warning log record.
@@ -48,9 +55,11 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addWarning($message, $context = array());
+	public function addWarning($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds an error log record.
@@ -59,9 +68,11 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addError($message, $context = array());
+	public function addError($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds a critical log record.
@@ -70,9 +81,11 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addCritical($message, $context = array());
+	public function addCritical($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds an alert log record.
@@ -82,9 +95,11 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addAlert($message, $context = array());
+	public function addAlert($message, $context = array(), $ttl = null, $key = null);
 
 	/**
    * Adds an emergency log record.
@@ -92,8 +107,10 @@ interface Logger
    *
    * @param  string  $message The log message
    * @param  array   $context The log context
+   * @param  number  $ttl     Length of time to cache the log
+   *                          Do not trigger again for this amount of time.
    * @return Boolean Whether the record has been processed
    */
-	public function addEmergency($message, $context = array());
+	public function addEmergency($message, $context = array(), $ttl = null, $key = null);
 
 }

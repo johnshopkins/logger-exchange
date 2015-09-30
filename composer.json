@@ -14,5 +14,14 @@
     "psr-4" : {
       "LoggerExchange\\" : ["src/"]
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:johnshopkins/cache-exchange"
+    }
+  ],
+  "suggest": {
+      "johnshopkins/cache-exchange": "Allows caching of logs for a certain period of time."
+  },
 }

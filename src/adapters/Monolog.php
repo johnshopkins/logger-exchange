@@ -13,61 +13,94 @@ class Monolog implements \LoggerExchange\interfaces\Logger
   /**
    * __construct
    * @param object $logger A fully configured Monolog object
+   * @param object $cache  Instance of CacheExchange\Cache
    */
-  public function __construct($logger)
+  public function __construct($logger, $cache = null)
   {
     $this->logger = $logger;
+    $this->cache = $cache;
   }
 
-  protected function log($level, $message, $context = array())
+  protected function log($level, $message, $context = array(), $ttl = null, $key = null)
   {
-    $this->logger->log($level, $message, $context);
+    if ($this->cache && $ttl) {
+
+      echo "the log has cached implications\n";
+
+      $key = $this->makeKey($key, $message);
+      $cached = $this->cache->fetch($key, false);
+
+      if (!$cached) {
+
+        echo "the log is NOT cached; trigger \n";
+
+        $this->cache->store(true, $key, $ttl, false);
+        $this->logger->log($level, $message, $context);
+
+      } else {
+
+        echo "the log is cached; do not trigger again \n";
+
+      }
+
+    } else {
+      $this->logger->log($level, $message, $context);
+    }
+
   }
 
-
-	public function addDebug($message, $context = array())
+  protected function makeKey($key, $message)
   {
-    $this->log(100, $message, $context);
-  }
+    if ($key) return $key;
 
-
-	public function addInfo($message, $context = array())
-  {
-    $this->log(200, $message, $context);
-  }
-
-  public function addNotice($message, $context = array())
-  {
-    $this->log(250, $message, $context);
-  }
-
-
-	public function addWarning($message, $context = array())
-  {
-    $this->log(300, $message, $context);
-  }
-
-
-	public function addError($message, $context = array())
-  {
-    $this->log(400, $message, $context);
-  }
-
-
-	public function addCritical($message, $context = array())
-  {
-    $this->log(500, $message, $context);
+    // create a key based on the message, but can cause collisions
+    return abs(crc32($message));
   }
 
 
-	public function addAlert($message, $context = array())
+	public function addDebug($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(550, $message, $context);
+    $this->log(100, $message, $context, $ttl, $key);
   }
 
 
-	public function addEmergency($message, $context = array())
+	public function addInfo($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(600, $message, $context);
+    $this->log(200, $message, $context, $ttl, $key);
+  }
+
+  public function addNotice($message, $context = array(), $ttl = null, $key = null)
+  {
+    $this->log(250, $message, $context, $ttl, $key);
+  }
+
+
+	public function addWarning($message, $context = array(), $ttl = null, $key = null)
+  {
+    $this->log(300, $message, $context, $ttl, $key);
+  }
+
+
+	public function addError($message, $context = array(), $ttl = null, $key = null)
+  {
+    $this->log(400, $message, $context, $ttl, $key);
+  }
+
+
+	public function addCritical($message, $context = array(), $ttl = null, $key = null)
+  {
+    $this->log(500, $message, $context, $ttl, $key);
+  }
+
+
+	public function addAlert($message, $context = array(), $ttl = null, $key = null)
+  {
+    $this->log(550, $message, $context, $ttl, $key);
+  }
+
+
+	public function addEmergency($message, $context = array(), $ttl = null, $key = null)
+  {
+    $this->log(600, $message, $context, $ttl, $key);
   }
 }
