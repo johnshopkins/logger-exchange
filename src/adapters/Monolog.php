@@ -25,23 +25,16 @@ class Monolog implements \LoggerExchange\interfaces\Logger
   {
     if ($this->cache && $ttl) {
 
-      echo "the log has cached implications\n";
-
       $key = $this->makeKey($key, $message);
       $cached = $this->cache->fetch($key, false);
 
       if (!$cached) {
 
-        echo "the log is NOT cached; trigger \n";
-
         $this->cache->store(true, $key, $ttl, false);
         $this->logger->log($level, $message, $context);
 
       } else {
-
-        echo "the log is cached; do not trigger again \n";
         return false;
-
       }
 
     } else {
