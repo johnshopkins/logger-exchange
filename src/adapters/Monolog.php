@@ -40,12 +40,15 @@ class Monolog implements \LoggerExchange\interfaces\Logger
       } else {
 
         echo "the log is cached; do not trigger again \n";
+        return false;
 
       }
 
     } else {
       $this->logger->log($level, $message, $context);
     }
+
+    return true;
 
   }
 
@@ -60,47 +63,47 @@ class Monolog implements \LoggerExchange\interfaces\Logger
 
 	public function addDebug($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(100, $message, $context, $ttl, $key);
+    return $this->log(100, $message, $context, $ttl, $key);
   }
 
 
 	public function addInfo($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(200, $message, $context, $ttl, $key);
+    return $this->log(200, $message, $context, $ttl, $key);
   }
 
   public function addNotice($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(250, $message, $context, $ttl, $key);
+    return $this->log(250, $message, $context, $ttl, $key);
   }
 
 
 	public function addWarning($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(300, $message, $context, $ttl, $key);
+    return $this->log(300, $message, $context, $ttl, $key);
   }
 
 
 	public function addError($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(400, $message, $context, $ttl, $key);
+    return $this->log(400, $message, $context, $ttl, $key);
   }
 
 
 	public function addCritical($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(500, $message, $context, $ttl, $key);
+    return $this->log(500, $message, $context, $ttl, $key);
   }
 
 
 	public function addAlert($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(550, $message, $context, $ttl, $key);
+    return $this->log(550, $message, $context, $ttl, $key);
   }
 
 
 	public function addEmergency($message, $context = array(), $ttl = null, $key = null)
   {
-    $this->log(600, $message, $context, $ttl, $key);
+    return $this->log(600, $message, $context, $ttl, $key);
   }
 }
