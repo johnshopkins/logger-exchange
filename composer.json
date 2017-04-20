@@ -1,27 +1,9 @@
 {
   "name": "johnshopkins/logger-exchange",
-  "version": "0.0.0",
   "description": "A collection of PHP interfaces and adapters to make swapping out logger dependencies quick and easy.",
-  "license": "MIT",
-  "homepage": "http://github.com/johnshopkins/logger-exchange",
-  "authors": [
-    {
-      "name": "Jen Wachter",
-      "email": "jwachter@jhu.edu"
-    }
-  ],
   "autoload": {
     "psr-4" : {
       "LoggerExchange\\" : ["src/"]
     }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:johnshopkins/cache-exchange"
-    }
-  ],
-  "suggest": {
-      "johnshopkins/cache-exchange": "Allows caching of logs for a certain period of time."
   }
 }
